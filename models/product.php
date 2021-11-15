@@ -43,7 +43,18 @@ class Product extends Db
     }
     public function getTenNewProducts()
     {
-        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE `products`.`manu_id`=`manufactures`.`manu_id` AND `feature` = 1");
+        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE `products`.`manu_id`=`manufactures`.`manu_id` AND `feature` = 1 LIMIT 5");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function search($keyword)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products 
+        WHERE `name` LIKE ?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("s", $keyword);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

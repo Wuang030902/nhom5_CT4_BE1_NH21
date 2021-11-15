@@ -106,20 +106,18 @@
 			<li><a href="products.html">BOOKS & ENTERTAINMENTS [14]</a></li>
 		</ul>
 		<br/>
+		<?php 
+		$getAllProductNew = $product->getTenNewProducts();
+		foreach($getAllProductNew as $value): 
+		?>
 		  <div class="thumbnail">
-			<img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
+			<img src="themes/images/products/<?php echo $value['image'] ?>" alt="Bootshop panasonoc New camera"/>
 			<div class="caption">
-			  <h5>Panasonic</h5>
-				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+			  <h5><?php echo $value['manu_name'] ?></h5>
+				<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo $value['price'] ?></a></h4>
 			</div>
 		  </div><br/>
-			<div class="thumbnail">
-				<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
-				<div class="caption">
-				  <h5>Kindle</h5>
-				    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
-				</div>
-			  </div><br/>
+		  <?php endforeach ;?>
 			<div class="thumbnail">
 				<img src="themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
 				<div class="caption">

@@ -1,3 +1,11 @@
+<?php
+require "config.php";
+require "models/db.php";
+require "models/product.php" ;
+$product = new Product;
+$getAllProduct = $product->getAllProducts();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

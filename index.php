@@ -90,7 +90,7 @@
 												<li class="span3">
 													<div class="thumbnail">
 														<i class="tag"></i>
-														<a href="product_details.html"><img style="width:250px; height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
+														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
 															<h5><?php echo $value['name'] ?></h5>
 															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
@@ -109,7 +109,7 @@
 												<li class="span3">
 													<div class="thumbnail">
 														<i class="tag"></i>
-														<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
+														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
 															<h5><?php echo $value['name'] ?></h5>
 															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
@@ -128,7 +128,7 @@
 												<li class="span3">
 													<div class="thumbnail">
 														<i class="tag"></i>
-														<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
+														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
 															<h5><?php echo $value['name'] ?></h5>
 															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
@@ -147,7 +147,7 @@
 												<li class="span3">
 													<div class="thumbnail">
 														<i class="tag"></i>
-														<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
+														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
 															<h5><?php echo $value['name'] ?></h5>
 															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
@@ -169,11 +169,11 @@
 						<?php foreach ($getAllProduct as $value) : ?>
 							<li class="span3">
 								<div class="thumbnail">
-									<a href="product_details.html"><img style="width:250px; height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
+									<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:250px; height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
 									<div class="caption">
 										<h5><?php echo $value['name'] ?></h5>
 										<p>
-											Lorem Ipsum is simply dummy text.
+										<?php echo substr( $value['description'],0,25 )."..,"?>
 										</p>
 
 										<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo number_format($value['price']) ?></a></h4>

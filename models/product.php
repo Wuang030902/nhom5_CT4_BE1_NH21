@@ -100,6 +100,24 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function getProductByTypeId6($type_id,$id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE type_id = ? AND `id` !=? LIMIT 6");
+        $sql->bind_param("ii", $type_id,$id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getProductByTypeId6Rand($type_id,$id,$dau,$cuoi)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE type_id = ? AND `id` !=? LIMIT ?,?");
+        $sql->bind_param("iiii", $type_id,$id,$dau,$cuoi);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function get3ProductByTypeId($type_id, $page, $perPage)
     {
         // Tính số thứ tự trang bắt đầu 
@@ -119,5 +137,14 @@ class Product extends Db
             $link = $link . "<li><a href='$url&page=$j'> $j </a></li>";
         }
         return $link;
+    }
+    public function getProductByID($id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `id` = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
     }
 }

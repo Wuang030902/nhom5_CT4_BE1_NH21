@@ -244,7 +244,7 @@
 			?>
 			<li class="span3">
 			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt=""/></a>
+				<a href="product_details.html"><img style="width:250px;height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""/></a>
 				<div class="caption">
 				  <h5><?php echo $value['name'] ?></h5>
 				  <p> 

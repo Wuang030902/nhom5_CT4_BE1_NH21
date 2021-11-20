@@ -253,12 +253,21 @@
 		<ul class="thumbnails">
 			<?php 
 			if(isset($_GET['keyword'])):
-			$serchKeyWord = $product->search($_GET['keyword']); 
-			foreach($serchKeyWord as $value):
+			$serchKeyWord = $product->search($_GET['keyword']);
+			// hiển thị 3 sản phẩm trên 1 trang
+			$perPage = 3;
+			// Lấy số trang trên thanh địa chỉ
+			$page = isset($_GET['page'])?$_GET['page']:1;
+			// Tính tổng số dòng, ví dụ kết quả là 18
+			$total = count($serchKeyWord);
+			// lấy đường dẫn đến file hiện hành
+			$url = $_SERVER['PHP_SELF']."?keyword=".$_GET['keyword'];
+			$serch3KeyWord = $product->search3($_GET['keyword'],$page,$perPage); 
+			foreach($serch3KeyWord as $value):
 			?>
 			<li class="span3">
 			  <div class="thumbnail">
-				<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt=""/></a>
+				<a href="product_details.html"><img style="height:250px;width:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""/></a>
 				<div class="caption">
 				  <h5><?php echo $value['name'] ?></h5>
 				  <p> 
@@ -277,13 +286,7 @@
 	<a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
 	<div class="pagination">
 			<ul>
-			<li><a href="#">&lsaquo;</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">...</a></li>
-			<li><a href="#">&rsaquo;</a></li>
+			 <?php echo $product->paginate($url,$total,$perPage) ?>
 			</ul>
 			</div>
 			<br class="clr"/>

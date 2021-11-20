@@ -1,8 +1,7 @@
-<?php include "header.php" ;
+<?php
+include "header.php" ;
 if(isset($_GET['id'])):
 	$getProductByID = $product->getProductByID($_GET['id']);
-	
-
 
 ?>
 <div id="mainBody">
@@ -82,7 +81,8 @@ if(isset($_GET['id'])):
 					<label class="control-label"><span><?php echo number_format( $getProductByID[0]['price']);?>VND</span></label>
 					<div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
-					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+					<a href="product_summary.php?id=<?php echo $_GET['id'] ?>"> <button type="button" class="btn btn-large btn-primary pull-right" >Add to cart <i class=" icon-shopping-cart"></i></button></a> 
+					  ?>
 					</div>
 				  </div>
 				</form>

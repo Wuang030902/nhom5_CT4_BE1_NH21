@@ -5,7 +5,7 @@ require "models/product.php" ;
 require "models/protypes.php";
 $product = new Product;
 $getAllProduct = $product->getAllProducts();
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

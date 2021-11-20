@@ -49,10 +49,30 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function search($keyword)
+    public function search($keyword,$type_id)
     {
-        $sql = self::$connection->prepare("SELECT * FROM products 
-        WHERE `name` LIKE ?");
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ? AND `type_id` = ?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("si", $keyword,$type_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function search3($keyword,$page,$perPage,$type_id)
+    {
+        $firstLink = ($page - 1) * $perPage;
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ? AND `type_id` = ? LIMIT ?,?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("siii", $keyword,$type_id,$firstLink,$perPage);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function searchAll($keyword)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?");
         $keyword = "%$keyword%";
         $sql->bind_param("s", $keyword);
         $sql->execute(); //return an object
@@ -60,11 +80,10 @@ class Product extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
-    public function search3($keyword,$page,$perPage)
+    public function search3All($keyword,$page,$perPage)
     {
         $firstLink = ($page - 1) * $perPage;
-        $sql = self::$connection->prepare("SELECT * FROM products 
-        WHERE `name` LIKE ? LIMIT ?,?");
+        $sql = self::$connection->prepare("SELECT * FROM products WHERE `name` LIKE ?  LIMIT ?,?");
         $keyword = "%$keyword%";
         $sql->bind_param("sii", $keyword,$firstLink,$perPage);
         $sql->execute(); //return an object

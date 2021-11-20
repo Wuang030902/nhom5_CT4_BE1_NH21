@@ -68,13 +68,15 @@ $getAllProduct = $product->getAllProducts();
     <a class="brand" href="index.html"><img src="themes/images/logo.png" alt="Bootsshop"/></a>
 		<form class="form-inline navbar-search" method="get" action="products.php" >
 		<input id="srchFld" class="srchTxt" type="text" name="keyword"/>
-		  <select class="srchTxt">
+		  <select name ="type_id"class="srchTxt">
 			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
+			<?php 
+			$protypes = new Protypes ;
+			$getAllProtypes = $protypes->getAllProtypes();
+			foreach($getAllProtypes as $value ):
+			 ?>
+			<option value="<?php echo $value['type_id'] ?>"><?php echo $value['type_name'] ?></option>
+			<?php endforeach; ?>
 		</select> 
 		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>

@@ -90,7 +90,7 @@
 												<li class="span3">
 													<div class="thumbnail">
 														<i class="tag"></i>
-														<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
+														<a href="product_details.html"><img style="width:250px; height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
 															<h5><?php echo $value['name'] ?></h5>
 															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
@@ -169,7 +169,7 @@
 						<?php foreach ($getAllProduct as $value) : ?>
 							<li class="span3">
 								<div class="thumbnail">
-									<a href="product_details.html"><img src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
+									<a href="product_details.html"><img style="width:250px; height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
 									<div class="caption">
 										<h5><?php echo $value['name'] ?></h5>
 										<p>

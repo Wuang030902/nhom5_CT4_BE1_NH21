@@ -103,14 +103,14 @@ if (isset($_GET['id'])) {
 						</tr>
 					</thead>
 					<tbody>
-						<?php $totalProduct=0; foreach ($_SESSION['arrSanPham'] as  $value) :
+						<?php $totalProduct=0; foreach ($_SESSION['arrSanPham'] as $key=>$value) :
 							$getProductById = $product->getProductByID($value['id']);
 						?>
 							<tr>
 								<td> <img width="60" src="themes/images/products/<?php echo $getProductById[0]['image']; ?>" alt="" /></td>
 								<td><?php echo $getProductById[0]['name']; ?><br />Color : black, Material : metal</td>
 								<td>
-									<div class="input-append"><input class="span1" value="<?php echo $value['sl']; ?>" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button> </div>
+									<div class="input-append"><input class="span1" value="<?php echo $value['sl']; ?>" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><a href="del.php?key=<?php echo $key ?>"><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button></a> </div>
 								</td>
 								<td><?php echo number_format($getProductById[0]['price']); ?>VND</td>
 								<td>$25.00</td>
@@ -119,7 +119,7 @@ if (isset($_GET['id'])) {
 							</tr>
 						<?php
 						$total1Product = $value['sl']*$getProductById[0]['price'];
-				
+
 						$totalProduct +=$total1Product;
 						endforeach;
 						?>
@@ -198,4 +198,4 @@ if (isset($_GET['id'])) {
 	</div>
 </div>
 <!-- MainBody End ============================= -->
-<?php include "footer.html"; ?>
+<?php include "footer.html"; ?> 

@@ -103,7 +103,6 @@
 						if (isset($_SESSION['arrSanPham'])):
 							
 							$totalProduct = 0;
-							var_dump($_SESSION['arrSanPham']);
 							foreach ($_SESSION['arrSanPham'] as $key => $value) :
 								if(isset($value['id'])):
 								$getProductById = $product->getProductByID($value['id']);

@@ -1,21 +1,5 @@
 <?php include "header.php";
-$x = 0;
-if (isset($_GET['id'])) {
-	if (isset($_SESSION['arrSanPham'])) {
-		foreach ($_SESSION['arrSanPham'] as $key => $value) {
-			if ($value['id'] == $_GET['id']) {
-				$_SESSION['arrSanPham'][$key]['sl']++;
-				$x = 1;
-				break;
-			}
-		}
-		if ($x != 1) {
-			$_SESSION['arrSanPham'][] = array('id' => $_GET['id'], "sl" => 1);
-		}
-	} else {
-		$_SESSION['arrSanPham'][] = array('id' => $_GET['id'], "sl" => 1);
-	}
-}
+
 ?>
 <div id="mainBody">
 	<div class="container">
@@ -103,99 +87,117 @@ if (isset($_GET['id'])) {
 						</tr>
 					</thead>
 					<tbody>
-						<?php $totalProduct=0; foreach ($_SESSION['arrSanPham'] as $key=>$value) :
-							$getProductById = $product->getProductByID($value['id']);
-						?>
-							<tr>
-								<td> <img width="60" src="themes/images/products/<?php echo $getProductById[0]['image']; ?>" alt="" /></td>
-								<td><?php echo $getProductById[0]['name']; ?><br />Color : black, Material : metal</td>
-								<td>
-									<div class="input-append"><input class="span1" value="<?php echo $value['sl']; ?>" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text"><button class="btn" type="button"><i class="icon-minus"></i></button><a href="del.php?key=<?php echo $key ?>"><button class="btn" type="button"><i class="icon-plus"></i></button><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button></a> </div>
-								</td>
-								<td><?php echo number_format($getProductById[0]['price']); ?>VND</td>
-								<td>$25.00</td>
-								<td>$15.00</td>
-								<td>$110.00</td>
-							</tr>
 						<?php
-						$total1Product = $value['sl']*$getProductById[0]['price'];
-
-						$totalProduct +=$total1Product;
-						endforeach;
+						if(isset($_GET['minus'])) {
+							$_SESSION['arrSanPham'][$_GET['minus']]['sl'] = $_GET['sl'] - 1;
+							if ($_SESSION['arrSanPham'][$_GET['minus']]['sl'] <= 0) {
+								unset($_SESSION['arrSanPham'][$_GET['minus']]);
+							}
+						}
+						if(isset($_GET['btn-plus'])) {
+							$_SESSION['arrSanPham'][$_GET['btn-plus']]['sl'] = $_GET['sl'] + 1;
+							if ($_SESSION['arrSanPham'][$_GET['btn-plus']]['sl'] <= 0) {
+								unset($_SESSION['arrSanPham'][$_GET['btn-plus']]);
+							}
+						}
+						if (isset($_SESSION['arrSanPham'])) :
+							$totalProduct = 0;
+							foreach ($_SESSION['arrSanPham'] as $key => $value) :
+								$getProductById = $product->getProductByID($value['id']);
 						?>
-						<tr>
-							<td colspan="6" style="text-align:right">Total Price: </td>
-							<td> $228.00</td>
-						</tr>
-						<tr>
-							<td colspan="6" style="text-align:right">Total Discount: </td>
-							<td> $50.00</td>
-						</tr>
-						<tr>
-							<td colspan="6" style="text-align:right">Total Tax: </td>
-							<td> $31.00</td>
-						</tr>
-						<tr>
-							<td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
-							<td class="label label-important" style="display:block"><?php echo number_format( $totalProduct) ?>VND <strong></strong></td>
-						</tr>
+								<tr>
+									<td> <img width="60" src="themes/images/products/<?php echo $getProductById[0]['image']; ?>" alt="" /></td>
+									<td><?php echo $getProductById[0]['name']; ?><br />Color : black, Material : metal</td>
+									<td>
+										<form method="GET">
+											<div class="input-append"><input name="sl" class="span1" value="<?php echo $value['sl']; ?>" style="max-width:34px" id="appendedInputButtons" size="16" type="text"><button class="btn" name="minus" type="submit" value="<?php echo $key ?>"><i class="icon-minus"></i></button><button class="btn" type="submit" name=btn-plus value="<?php echo $key ?>"><i class="icon-plus"></i></button><a href="del.php?key=<?php echo $key ?>"><button class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button></a> </div>
+										</form>
+									</td>
+									<td><?php echo number_format($getProductById[0]['price']); ?>VND</td>
+									<td>$25.00</td>
+									<td>$15.00</td>
+									<td>$110.00</td>
+								</tr>
+							<?php
+								$total1Product = $value['sl'] * $getProductById[0]['price'];
+
+								$totalProduct += $total1Product;
+							endforeach;
+							?>
+							<tr>
+								<td colspan="6" style="text-align:right">Total Price: </td>
+								<td> $228.00</td>
+							</tr>
+							<tr>
+								<td colspan="6" style="text-align:right">Total Discount: </td>
+								<td> $50.00</td>
+							</tr>
+							<tr>
+								<td colspan="6" style="text-align:right">Total Tax: </td>
+								<td> $31.00</td>
+							</tr>
+							<tr>
+								<td colspan="6" style="text-align:right"><strong>TOTAL ($228 - $50 + $31) =</strong></td>
+								<td class="label label-important" style="display:block"><?php echo number_format($totalProduct) ?>VND <strong></strong></td>
+							</tr>
 					</tbody>
 				</table>
+			<?php endif; ?>
 
 
-				<table class="table table-bordered">
-					<tbody>
-						<tr>
-							<td>
-								<form class="form-horizontal">
-									<div class="control-group">
-										<label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
-										<div class="controls">
-											<input type="text" class="input-medium" placeholder="CODE">
-											<button type="submit" class="btn"> ADD </button>
-										</div>
-									</div>
-								</form>
-							</td>
-						</tr>
-
-					</tbody>
-				</table>
-
-				<table class="table table-bordered">
-					<tr>
-						<th>ESTIMATE YOUR SHIPPING </th>
-					</tr>
+			<table class="table table-bordered">
+				<tbody>
 					<tr>
 						<td>
 							<form class="form-horizontal">
 								<div class="control-group">
-									<label class="control-label" for="inputCountry">Country </label>
+									<label class="control-label"><strong> VOUCHERS CODE: </strong> </label>
 									<div class="controls">
-										<input type="text" id="inputCountry" placeholder="Country">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputPost">Post Code/ Zipcode </label>
-									<div class="controls">
-										<input type="text" id="inputPost" placeholder="Postcode">
-									</div>
-								</div>
-								<div class="control-group">
-									<div class="controls">
-										<button type="submit" class="btn">ESTIMATE </button>
+										<input type="text" class="input-medium" placeholder="CODE">
+										<button type="submit" class="btn"> ADD </button>
 									</div>
 								</div>
 							</form>
 						</td>
 					</tr>
-				</table>
-				<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
-				<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
+
+				</tbody>
+			</table>
+
+			<table class="table table-bordered">
+				<tr>
+					<th>ESTIMATE YOUR SHIPPING </th>
+				</tr>
+				<tr>
+					<td>
+						<form class="form-horizontal">
+							<div class="control-group">
+								<label class="control-label" for="inputCountry">Country </label>
+								<div class="controls">
+									<input type="text" id="inputCountry" placeholder="Country">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputPost">Post Code/ Zipcode </label>
+								<div class="controls">
+									<input type="text" id="inputPost" placeholder="Postcode">
+								</div>
+							</div>
+							<div class="control-group">
+								<div class="controls">
+									<button type="submit" class="btn">ESTIMATE </button>
+								</div>
+							</div>
+						</form>
+					</td>
+				</tr>
+			</table>
+			<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+			<a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 
 			</div>
 		</div>
 	</div>
 </div>
 <!-- MainBody End ============================= -->
-<?php include "footer.html"; ?> 
+<?php include "footer.html"; ?>

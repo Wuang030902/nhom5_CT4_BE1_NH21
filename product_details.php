@@ -81,7 +81,7 @@ if(isset($_GET['id'])):
 					<label class="control-label"><span><?php echo number_format( $getProductByID[0]['price']);?>VND</span></label>
 					<div class="controls">
 					<input type="number" class="span1" placeholder="Qty."/>
-					<a href="product_summary.php?id=<?php echo $_GET['id'] ?>"> <button type="button" class="btn btn-large btn-primary pull-right" >Add to cart <i class=" icon-shopping-cart"></i></button></a> 
+					<a href="addtocart.php?id=<?php echo $_GET['id'] ?>"> <button type="button" class="btn btn-large btn-primary pull-right" >Add to cart <i class=" icon-shopping-cart"></i></button></a> 
 					  ?>
 					</div>
 				  </div>

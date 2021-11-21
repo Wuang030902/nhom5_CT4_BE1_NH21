@@ -100,10 +100,14 @@
 								unset($_SESSION['arrSanPham'][$_GET['btn-plus']]);
 							}
 						}
-						if (isset($_SESSION['arrSanPham'])) :
+						if (isset($_SESSION['arrSanPham'])):
+							
 							$totalProduct = 0;
+							var_dump($_SESSION['arrSanPham']);
 							foreach ($_SESSION['arrSanPham'] as $key => $value) :
+								if(isset($value['id'])):
 								$getProductById = $product->getProductByID($value['id']);
+								
 						?>
 								<tr>
 									<td> <img width="60" src="themes/images/products/<?php echo $getProductById[0]['image']; ?>" alt="" /></td>
@@ -122,7 +126,7 @@
 								$total1Product = $value['sl'] * $getProductById[0]['price'];
 
 								$totalProduct += $total1Product;
-							endforeach;
+								endif;endforeach;
 							?>
 							<tr>
 								<td colspan="6" style="text-align:right">Total Price: </td>

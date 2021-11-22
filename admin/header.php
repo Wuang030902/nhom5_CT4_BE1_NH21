@@ -2,7 +2,11 @@
 require "config.php";
 require "models/db.php";
 require "models/products.php";
+require "models/manufactures.php";
+require "models/protypes.php";
 $product = new Products;
+$manufactures = new Manufacture;
+$protypes = new Protype;
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -229,6 +233,24 @@ $product = new Products;
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Products
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="manufactures.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Manufactures
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="protypes.php" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Protypes
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

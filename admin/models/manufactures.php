@@ -9,4 +9,10 @@ class Manufacture extends Db{
         return $items; //return an array
 
     }
+    public function delManufacture($id)
+    {
+        $sql = self::$connection->prepare("DELETE  FROM `manufactures` WHERE `manufactures`.`manu_id`= ?");
+        $sql->bind_param("i", $id);
+        return $sql->execute(); //return an object
+    }
 }

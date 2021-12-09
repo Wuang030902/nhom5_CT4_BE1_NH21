@@ -16,4 +16,3 @@ foreach ($getAllProductNew as $value) :
         <h5>Payment Methods</h5>
     </div>
 </div>
-</div>

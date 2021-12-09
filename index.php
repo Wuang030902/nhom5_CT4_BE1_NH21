@@ -1,4 +1,7 @@
-﻿<?php include "header.php" ?>
+﻿<?php include "header.php";
+
+ ?>
+
 <div id="carouselBlk">
 	<div id="myCarousel" class="carousel slide">
 		<div class="carousel-inner">
@@ -74,6 +77,7 @@
 				</ul>
 				<br />
 				<?php include "sanphamnoibat.php" ?>
+			</div>
 				<!-- Sidebar end=============================================== -->
 				<div class="span9">
 					<div class="well well-small">
@@ -92,8 +96,8 @@
 														<i class="tag"></i>
 														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
-															<h5><?php echo $value['name'] ?></h5>
-															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
+															
+															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</span></h4>
 														</div>
 													</div>
 												</li>
@@ -111,8 +115,8 @@
 														<i class="tag"></i>
 														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
-															<h5><?php echo $value['name'] ?></h5>
-															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
+															
+															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</span></h4>
 														</div>
 													</div>
 												</li>
@@ -130,8 +134,8 @@
 														<i class="tag"></i>
 														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
-															<h5><?php echo $value['name'] ?></h5>
-															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
+															
+															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</span></h4>
 														</div>
 													</div>
 												</li>
@@ -149,8 +153,8 @@
 														<i class="tag"></i>
 														<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:150px; height:150px" src="themes/images/products/<?php echo $value['image'] ?>" alt=""></a>
 														<div class="caption">
-															<h5><?php echo $value['name'] ?></h5>
-															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo number_format($value['price']) ?>VND</span></h4>
+															
+															<h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right"><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</span></h4>
 														</div>
 													</div>
 												</li>
@@ -171,12 +175,9 @@
 								<div class="thumbnail">
 									<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="width:250px; height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
 									<div class="caption">
-										<h5><?php echo $value['name'] ?></h5>
-										<p>
-										<?php echo substr( $value['description'],0,25 )."..,"?>
-										</p>
+										<h5><?php echo catChuoi($value['name']); ?></h5>
 
-										<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo number_format($value['price']) ?></a></h4>
+										<h4 style="text-align:center"><a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</a></h4>
 									</div>
 								</div>
 							</li>

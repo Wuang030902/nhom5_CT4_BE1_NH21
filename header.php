@@ -3,6 +3,7 @@ require "config.php";
 require "models/db.php";
 require "models/product.php" ;
 require "models/protypes.php";
+require "mylibrary.php";
 $product = new Product;
 $getAllProduct = $product->getAllProducts();
 session_start();

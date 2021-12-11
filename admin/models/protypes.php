@@ -9,4 +9,10 @@ class Protypes extends Db{
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function delProtypes($type_id)
+    {
+        $sql = self::$connection->prepare("DELETE  FROM `protypes` WHERE `protypes`.`type_id`= ?");
+        $sql->bind_param("i", $type_id);
+        return $sql->execute(); //return an object
+    }
 }

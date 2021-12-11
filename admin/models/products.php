@@ -80,4 +80,15 @@ class Products extends Db
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $items; //return an array
     }
+    public function getAllProductsWithChart()
+    {
+        // Tính số thứ tự trang bắt đầu 
+
+        $sql = self::$connection->prepare("SELECT * FROM `products`,`chart` WHERE `products`.`id` = `chart`.`id`");
+
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
 }

@@ -1,28 +1,28 @@
 <?php include "header.php"; ?>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Project Add</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Project Add</li>
-            </ol>
-          </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Project Add</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Project Add</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
 
-    <!-- Main content -->
-    <section class="content">
+  <!-- Main content -->
+  <section class="content">
     <form action="add.php" method="post" enctype="multipart/form-data">
-    <div class="row">
+      <div class="row">
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
@@ -43,11 +43,11 @@
                 <label for="inputStatus">Manufacture</label>
                 <select id="inputStatus" class="form-control custom-select" name="manu">
                   <option selected disabled>Select one</option>
-                  <?php 
-                  $getAllManu = $manu->getAllManu(); 
-                  foreach($getAllManu as $value):
+                  <?php
+                  $getAllManu = $manu->getAllManu();
+                  foreach ($getAllManu as $value) :
                   ?>
-                  <option value="<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></option>
+                    <option value="<?php echo $value['manu_id'] ?>"><?php echo $value['manu_name'] ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -55,12 +55,12 @@
                 <label for="inputStatus">Protypes</label>
                 <select id="inputStatus" class="form-control custom-select" name="type">
                   <option selected disabled>Select one</option>
-                  <?php 
-                  $getAllProtypes = $protypes->getAllProtypes(); 
-                  foreach($getAllProtypes as $value):
+                  <?php
+                  $getAllProtypes = $protypes->getAllProtypes();
+                  foreach ($getAllProtypes as $value) :
                   ?>
-                  <option value="<?php echo $value['type_id'] ?>"><?php echo $value['type_name'] ?></option>
-                    <?php endforeach; ?>
+                    <option value="<?php echo $value['type_id'] ?>"><?php echo $value['type_name'] ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group">
@@ -68,12 +68,14 @@
                 <input type="text" id="inputPrice" class="form-control" name="price">
               </div>
               <div class="form-group">
-                <label  for="inputProjectLeader">Description</label>
+                <label for="inputProjectLeader">Description</label>
                 <input type="text" id="inputProjectLeader" class="form-control" name="desc">
               </div>
               <div class="form-group">
                 <label for="inputProjectLeader">Image</label>
-                <input type="file" id="inputProjectLeader" class="form-control"name="image">
+                <button id="files" onclick="document.getElementById('file').click();return false;">Upload Image</button>
+                <input type="file" id="file" onchange="readURL(this);" class="form-control" name="image" style="visibility: hidden">
+                <img id="Image1" style="height:350px; width:400px" src="../themes/images/products/3444651.jpg" alt="hinh anh">
               </div>
             </div>
             <!-- /.card-body -->
@@ -82,7 +84,7 @@
         </div>
         <div class="col-md-6">
           <div class="card card-secondary">
-           
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -90,15 +92,15 @@
       </div>
       <div class="row">
         <div class="col-12">
-          
+
           <input type="submit" value="Create New Products" class="btn btn-success float-right" name="submit">
-          
+
         </div>
       </div>
-      </form> 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </form>
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
- <?php include "footer.html" ?>
+<?php include "footer.html" ?>

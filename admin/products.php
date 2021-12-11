@@ -1,5 +1,4 @@
-<?php include "header.php"; ?>
-
+<?php include "header.php" ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -43,105 +42,79 @@
               <th style="width: 1%">
                 ID
               </th>
-              <th style="width: 10%">
+              <th style="width: 20%">
                 Name
               </th>
-              <th style="width: 10%">
+              <th style="width: 5%">
                 Image
               </th>
-
-              <th style="width: 40%">
+              <th style="width: 20%">
                 Description
               </th>
-              <th style="width: 10%" class="text-center">
+              <th style="width: 14%">
                 Price
               </th>
-              <th style="width: 10% " class="text-center">
+              <th style="width: 10%" class="text-center">
                 Manufacture
               </th>
               <th style="width: 10%" class="text-center">
                 Protype
               </th>
-              <th style="width: 10%" class="text-center">
+              <th style="width: 30%" class="text-center">
                 Action
               </th>
             </tr>
           </thead>
           <tbody>
-            <?php
-            $getAllProductsManuProtypes = $product->getAllProductsManuProTypes();
-            // hiển thị 3 sản phẩm trên 1 trang
-            $perPage = 5;
-            // Lấy số trang trên thanh địa chỉ
-            $page = isset($_GET['page']) ? $_GET['page'] : 1;
-            // Tính tổng số dòng, ví dụ kết quả là 18
-            $total = count($getAllProductsManuProtypes);
-            // lấy đường dẫn đến file hiện hành
-            $url = $_SERVER['PHP_SELF'];
-            $getAllProductsManuProtypes = $product->getAllProductsManuProTypesPhanTrang($page,$perPage);
-            foreach ($getAllProductsManuProtypes as $value) :
-            ?>
-              <tr>
-                <td>
-                  <?php echo $value['id']; ?>
-                </td>
-                <td>
-                  <a>
-                    <?php echo $value['name']; ?>
-                  </a>
-                  <br />
-                </td>
-                <td>
-                  <img style="height: 100px;width:100px" src="../themes/images/products/<?php echo $value['image']; ?>" alt="">
-                </td>
-                <td class="project_progress">
-                  <?php echo substr($value['description'], 0, 50) ?>
-                </td>
-                <td class="project-state">
-                  <?php echo $value['price']; ?>
-                </td>
-                <td class="project-state">
-                  <?php echo $value['manu_name']; ?>
-                </td>
-                <td class="project-state">
-                  <?php echo $value['type_name']; ?>
-                </td>
-                <td class="project-actions text-right">
-                  <a class="btn btn-primary btn-sm" href="#">
-                    <i class="fas fa-folder">
-                    </i>
-                    View
-                  </a>
-                  <a class="btn btn-info btn-sm" href="productedit.php?id=<?php echo $value['id'] ?>">
-                    <i class="fas fa-pencil-alt">
-                    </i>
-                    Edit
-                  </a>
-                  <a class="btn btn-danger btn-sm" href="del.php?id=<?php echo $value['id']; ?>">
-                    <i class="fas fa-trash">
-                    </i>
-                    Delete
-                  </a>
-                </td>
-              </tr>
-            <?php
-             endforeach; 
-              
-            ?>
-            
+            <?php 
+            $getAllProduct = $product->getAllProducts();
+            foreach($getAllProduct as $value): ?>
+            <tr>
+              <td>
+                <?php echo $value['id']; ?>
+              </td>
+              <td>
+              <?php echo $value['name']; ?>
+              </td>
+              <td>
+                <img style="width:50px" src="../themes/images/products/<?php echo $value['image']; ?>" alt="">
+              </td>
+              <td>
+                <?php echo $value['description']; ?>
+              </td>
+              <td class="text-center">
+              <?php echo number_format( $value['price']); ?>VND
+              </td>
+              <td class="text-center">
+              <?php echo $value['manu_name']; ?>
+              </td>
+              <td class="text-center">
+              <?php echo $value['type_name']; ?>
+              </td>
+
+              <td class="project-actions text-right">
+                <a class="btn btn-info btn-sm" href="edit.php?id=<?php echo $value['id'] ?>">
+                  <i class="fas fa-pencil-alt">
+                  </i>
+                  Edit
+                </a>
+                <a class="btn btn-danger btn-sm" href="del.php?id=<?php echo $value['id'] ?>">
+                  <i class="fas fa-trash">
+                  </i>
+                  Delete
+                </a>
+              </td>
+            </tr>
+            <?php endforeach ?>
           </tbody>
         </table>
       </div>
-      
       <!-- /.card-body -->
     </div>
-    <?php echo$product->paginate($url,$total,$perPage);?>
     <!-- /.card -->
 
   </section>
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-
-<?php include "footer.html"; ?>
+<?php include "footer.html" ?>

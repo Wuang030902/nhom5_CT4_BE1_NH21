@@ -52,15 +52,15 @@
           </thead>
           <tbody>
               <?php 
-              $manu = new Protypes;
-              $getAllManu = $manu->getAllProtypes();
+              $manu = new Manufacture;
+              $getAllManu = $manu->getAllManu();
              foreach($getAllManu as $value): ?>
             <tr>
               <td>
-                <?php echo $value['type_id']; ?>
+                <?php echo $value['manu_id']; ?>
               </td>
               <td>
-              <?php echo $value['type_name']; ?>
+              <?php echo $value['manu_name']; ?>
               </td>
               <td class="project-actions text-right">
                 <a class="btn btn-info btn-sm" href="#">

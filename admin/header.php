@@ -1,12 +1,16 @@
-<?php 
+<?php
 require "config.php";
 require "models/db.php";
 require "models/products.php";
-require "models/manufactures.php";
+require "models/manufacture.php";
 require "models/protypes.php";
+
+
+
+$manu = new Manufacture;
 $product = new Products;
-$manufactures = new Manufacture;
-$protypes = new Protype;
+$protypes = new Protypes;
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +39,18 @@ $protypes = new Protype;
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <script>
+  function readURL(input){
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){
+        $('#Image1')
+        .attr('src',e.target.result).width(400).height(350);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -225,7 +241,7 @@ $protypes = new Protype;
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="products.php" class="nav-link">
+            <a href="products.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Products
@@ -234,7 +250,7 @@ $protypes = new Protype;
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="manufactures.php" class="nav-link">
+            <a href="manufacture.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Manufactures
@@ -243,10 +259,37 @@ $protypes = new Protype;
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="protypes.php" class="nav-link">
+            <a href="protypes.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Protypes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="index.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="productadd.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="../login/logout.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Logout
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

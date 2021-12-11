@@ -10,6 +10,7 @@
 				</ul>
 				<br />
 				<?php include "sanphamnoibat.php" ?>
+			</div>
 				<!-- Sidebar end=============================================== -->
 				<div class="span9">
 					<ul class="breadcrumb">
@@ -244,13 +245,13 @@
 								?>
 										<li class="span3">
 											<div class="thumbnail">
-												<a href="product_details.html"><img style="height:250px;width:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
+												<a href="product_details.php?id=<?php echo $value['id'] ?>"><img style="height:250px;width:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
 												<div class="caption">
-													<h5><?php echo $value['name'] ?></h5>
+													<h5><?php echo catChuoi($value['name']); ?></h5>
 													<p>
 														Mô tả
 													</p>
-													<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo number_format($value['price']) ?>VND</a></h4>
+													<h4 style="text-align:center"> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</a></h4>
 												</div>
 											</div>
 										</li>

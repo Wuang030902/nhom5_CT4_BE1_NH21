@@ -59,11 +59,11 @@ if (isset($_GET['id'])) :
 							<hr class="soft" />
 							<form class="form-horizontal qtyFrm">
 								<div class="control-group">
-									<label class="control-label"><span><?php echo number_format($getProductByID[0]['price']); ?>VND</span></label>
+									<label class="control-label"><span><?php echo str_replace(",",".",catSo(number_format($value['price'])))  ?>đ</span></label>
 									<div class="controls">
 										<input type="number" class="span1" placeholder="Qty." />
 										<a href="addtocart.php?id=<?php echo $_GET['id'] ?>"> <button type="button" class="btn btn-large btn-primary pull-right">Add to cart <i class=" icon-shopping-cart"></i></button></a>
-										?>
+										
 									</div>
 								</div>
 							</form>

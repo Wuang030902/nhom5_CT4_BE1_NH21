@@ -11,7 +11,7 @@
 				<br />
 				<?php include "sanphamnoibat.php"; ?>
 			</div>
-			
+
 			<!-- Sidebar end=============================================== -->
 			<div class="span9">
 				<ul class="breadcrumb">
@@ -225,23 +225,20 @@
 								// hiển thị 3 sản phẩm trên 1 trang
 								$perPage = 3;
 								// Lấy số trang trên thanh địa chỉ
-								$page = isset($_GET['page'])?$_GET['page']:1;
+								$page = isset($_GET['page']) ? $_GET['page'] : 1;
 								// Tính tổng số dòng, ví dụ kết quả là 18
 								$total = count($getProductByTypeID);
 								// lấy đường dẫn đến file hiện hành
-								$url = $_SERVER['PHP_SELF']."?type_id=".$_GET['type_id'];
-								$get3ProductByTypeID = $product->get3ProductByTypeId($_GET['type_id'],$page,$perPage);
+								$url = $_SERVER['PHP_SELF'] . "?type_id=" . $_GET['type_id'];
+								$get3ProductByTypeID = $product->get3ProductByTypeId($_GET['type_id'], $page, $perPage);
 								foreach ($get3ProductByTypeID as $value) :
 							?>
 									<li class="span3">
 										<div class="thumbnail">
-											<a href="product_details.html"><img style="width:250px;height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
+											<a href="product_details.php?id=<?php echo $value['id']; ?>"><img style="width:250px;height:250px" src="themes/images/products/<?php echo $value['image'] ?>" alt="" /></a>
 											<div class="caption">
-												<h5><?php echo $value['name'] ?></h5>
-												<p>
-													I'm a paragraph. Click here
-												</p>
-												<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo number_format($value['price']) ?>VND</a></h4>
+												<h5><?php echo catChuoi($value['name']); ?></h5>
+												<h4 style="text-align:center"><a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#"><?php echo str_replace(",", ".", catSo(number_format($value['price']))) ?>đ</a></h4>
 											</div>
 										</div>
 									</li>
@@ -255,7 +252,7 @@
 				<a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
 				<div class="pagination">
 					<ul>
-						<?php echo $product->paginate($url,$total,$perPage)?>
+						<?php echo $product->paginate($url, $total, $perPage) ?>
 					</ul>
 				</div>
 				<br class="clr" />

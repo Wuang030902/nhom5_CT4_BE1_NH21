@@ -2,8 +2,9 @@
 require "config.php";
 require "models/db.php";
 require "models/products.php";
+require "models/manufacture.php";
 $manu = new Manufacture;
-$product = new Product;
+$product = new Products;
 
 if(isset($_GET['manu_id'])){
     $getAllProducts = $product->getProductsByManu($_GET['manu_id']);

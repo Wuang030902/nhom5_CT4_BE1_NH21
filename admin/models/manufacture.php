@@ -15,5 +15,12 @@ class Manufacture extends Db{
         $sql->bind_param("i", $id);
         return $sql->execute(); //return an object
     }
-    
+    public function addManufacture($manu_name)
+    {
+        $sql = self::$connection->prepare("INSERT 
+        INTO `manufactures`(`manu_name`) 
+        VALUES (?)");
+        $sql->bind_param("s", $manu_name);
+        return $sql->execute(); //return an object
+    }
 }

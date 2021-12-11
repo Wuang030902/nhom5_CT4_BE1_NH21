@@ -286,6 +286,24 @@ $protypes = new Protypes;
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="addmanufacture.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add manufacture
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="addprotype.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add protypes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="../login/logout.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>

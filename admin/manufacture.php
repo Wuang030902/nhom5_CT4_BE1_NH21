@@ -63,7 +63,7 @@
               <?php echo $value['manu_name']; ?>
               </td>
               <td class="project-actions text-right">
-                <a class="btn btn-info btn-sm" href="#">
+                <a class="btn btn-info btn-sm" href="editmanu.php">
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit

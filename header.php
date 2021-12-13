@@ -4,10 +4,13 @@ require "models/db.php";
 require "models/product.php";
 require "models/protypes.php";
 require "models/account.php";
+require "models/cart.php";
 require "mylibrary.php";
 $product = new Product;
 $getAllProduct = $product->getAllProducts();
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

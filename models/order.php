@@ -14,16 +14,22 @@ class Order extends Db{
         $sql->bind_param("iis",$qty,$product_id,$id);
         return $sql->execute(); //return an object
     }
-    public function addOrder($id,$tongtien,$trangthai)
+    public function addOrder($id,$sanPham,$tongtien,$trangthai)
     {
-        $sql = self::$connection->prepare("INSERT INTO `order`(`id`,`tongtien`,`trangthai`) VALUES (?,?,?)");
-        $sql->bind_param("sis", $id,$tongtien,$trangthai);
+        $sql = self::$connection->prepare("INSERT INTO `order`(`id`,`sanpham`,`tongtien`,`trangthai`) VALUES (?,?,?,?)");
+        $sql->bind_param("ssis", $id,$sanPham,$tongtien,$trangthai);
         return $sql->execute(); //return an object
     }
     public function deleteCart($id,$product_id)
     {
         $sql = self::$connection->prepare("DELETE FROM `cart` WHERE `product_id` = ? AND `id` = ?");
         $sql->bind_param("is",$product_id,$id);
+        return $sql->execute(); //return an object
+    }
+    public function deleteCartByMaDonHang($madonhang)
+    {
+        $sql = self::$connection->prepare("DELETE FROM `order` WHERE `madonhang` = ?");
+        $sql->bind_param("i",$madonhang);
         return $sql->execute(); //return an object
     }
 }

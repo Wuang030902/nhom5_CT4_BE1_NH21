@@ -2,10 +2,10 @@
 session_start();
 if (isset($_SESSION['email'])) :
     include "header.php";
-    require "models/order.php";
+    $product = new Product;
     $getorder = new Order;
+    $getcart = new Cart;
     $getAllOrder = $getorder->getAllOrder();
-
 ?>
     <div id="mainBody">
         <div class="container">
@@ -85,8 +85,10 @@ if (isset($_SESSION['email'])) :
                             <tr>
                                 <th>Mã đơn hàng</th>
                                 <th>Ngày mua</th>
+                                <th>Sản phẩm</th>
                                 <th>Tổng tiền</th>
                                 <th>Trạng thái</th>
+                                <th>Chỉnh sửa </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -96,8 +98,10 @@ if (isset($_SESSION['email'])) :
                                 <td>
                                 <?php  echo $value['ngaymua'] ?>
                                 </td>
+                                <td> <?php  echo $value['sanpham'] ?></td>
                                 <td><?php echo str_replace(",",".",number_format($value['tongtien']))  ?></td>
                                 <td><?php  echo $value['trangthai'] ?></td>
+                                <td><a href="delorder.php?madonhang=<?php echo $value['madonhang']  ?>">Xóa đơn hàng</a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

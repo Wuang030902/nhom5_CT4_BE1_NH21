@@ -1,5 +1,14 @@
 <?php
 class Cart extends Db{
+    public function getAllCartByID($id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM cart WHERE id = ?");
+        $sql->bind_param("i",$id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
     public function getAllCart()
     {
         $sql = self::$connection->prepare("SELECT * FROM cart");
@@ -24,6 +33,12 @@ class Cart extends Db{
     {
         $sql = self::$connection->prepare("DELETE FROM `cart` WHERE `product_id` = ? AND `id` = ?");
         $sql->bind_param("is",$product_id,$id);
+        return $sql->execute(); //return an object
+    }
+    public function deleteCartByID($id)
+    {
+        $sql = self::$connection->prepare("DELETE FROM `cart` WHERE `id` = ?");
+        $sql->bind_param("s",$id);
         return $sql->execute(); //return an object
     }
 }

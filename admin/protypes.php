@@ -52,9 +52,9 @@
           </thead>
           <tbody>
               <?php 
-              $manu = new Protypes;
-              $getAllManu = $manu->getAllProtypes();
-             foreach($getAllManu as $value): ?>
+              $protype = new Protypes;
+              $getAllProtypes = $protype->getAllProtypes();
+             foreach($getAllProtypes as $value): ?>
             <tr>
               <td>
                 <?php echo $value['type_id']; ?>
@@ -63,12 +63,12 @@
               <?php echo $value['type_name']; ?>
               </td>
               <td class="project-actions text-right">
-                <a class="btn btn-info btn-sm" href="#">
+                <a class="btn btn-info btn-sm" href="editprotype.php?type_id=<?php echo $value['type_id'] ?>">
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit
                 </a>
-                <a class="btn btn-danger btn-sm" href="#">
+                <a class="btn btn-danger btn-sm" href="delprotypes.php?type_id=<?php echo $value['type_id'] ?>">
                   <i class="fas fa-trash">
                   </i>
                   Delete

@@ -6,7 +6,6 @@ $dataPoints = array(
 foreach($getAllProductWithChart as $value){
   $dataPoints = array_merge($dataPoints,array(array("y"=>$value['qty'],"label"=>$value['name'])));
 }
- 
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -40,5 +39,8 @@ chart.render();
 </head>
 <body>
 <div id="chartContainer" style="height: 100%; width: 70%; margin:0px 250px"></div>
+<script>
+	
+</script>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <?php include "footer.html"; ?>       

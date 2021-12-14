@@ -63,7 +63,11 @@
               <?php echo $value['manu_name']; ?>
               </td>
               <td class="project-actions text-right">
+<<<<<<< HEAD
                 <a class="btn btn-info btn-sm" href="editmanufacture.php?manu_id=<?php echo $value['manu_id'] ?>">
+=======
+                <a class="btn btn-info btn-sm" href="editmanu.php">
+>>>>>>> 52427cb4789a9f8e39791cd6fbab07e7ee69c78c
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit

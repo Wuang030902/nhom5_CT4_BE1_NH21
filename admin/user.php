@@ -40,10 +40,16 @@
           <thead>
             <tr>
               <th style="width: 33,33%">
-                ID
+                Email
               </th>
               <th style="width: 33,33%">
-                Name
+                Password
+              </th>
+              <th style="width: 33,33%">
+                FirstName
+              </th>
+              <th style="width: 33,33%">
+                LastName
               </th>
               <th style="width: 33,33%" class="text-center">
                 Action
@@ -52,26 +58,32 @@
           </thead>
           <tbody>
               <?php 
-              $manu = new Manufacture;
-              $getAllManu = $manu->getAllManu();
-             foreach($getAllManu as $value): ?>
+              $account = new Account;
+              $getAllaccounts = $account->getAllAccount();
+             foreach($getAllaccounts as $value): ?>
             <tr>
               <td>
-                <?php echo $value['manu_id']; ?>
+                <?php echo $value['email']; ?>
               </td>
               <td>
-              <?php echo $value['manu_name']; ?>
+              <?php echo $value['password']; ?>
+              </td>
+              <td>
+              <?php echo $value['first_name']; ?>
+              </td>
+              <td>
+              <?php echo $value['last_name']; ?>
               </td>
               <td class="project-actions text-right">
 
-                <a class="btn btn-info btn-sm" href="editmanufacture.php?manu_id=<?php echo $value['manu_id'] ?>">
+                <a class="btn btn-info btn-sm" href="edituser.php?email=<?php echo $value['email'] ?>">
                 
 
                   <i class="fas fa-pencil-alt">
                   </i>
                   Edit
                 </a>
-                <a class="btn btn-danger btn-sm" href="delManufacture.php?manu_id=<?php echo $value['manu_id'] ?>">
+                <a class="btn btn-danger btn-sm" href="delUser.php?id=<?php echo $value['email'] ?>">
                   <i class="fas fa-trash">
                   </i>
                   Delete

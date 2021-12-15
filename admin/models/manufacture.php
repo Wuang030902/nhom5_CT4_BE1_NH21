@@ -23,7 +23,15 @@ class Manufacture extends Db{
         $sql->bind_param("s", $manu_name);
         return $sql->execute(); //return an object
     }
-    public function getManufactureById($manu_id){
+    public function getManufacturgiteById($manu_id){
+        $sql = self::$connection->prepare("SELECT * FROM `manufactures` WHERE `manu_id` = ?");
+        $sql->bind_param("i", $manu_id);
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
+    public function getManufacturgiteById2($manu_id){
         $sql = self::$connection->prepare("SELECT * FROM `manufactures` WHERE `manu_id` = ?");
         $sql->bind_param("i", $manu_id);
         $sql->execute(); //return an object

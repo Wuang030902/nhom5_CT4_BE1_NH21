@@ -4,13 +4,13 @@ require "models/db.php";
 require "models/products.php";
 require "models/manufacture.php";
 require "models/protypes.php";
-
+require "models/account.php";
 
 
 $manu = new Manufacture;
 $product = new Products;
 $protypes = new Protypes;
-
+$account = new Account;
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -240,38 +240,30 @@ $protypes = new Protypes;
               </p>
             </a>
           </li>
+          
+          <li class="nav-item menu-open">
+            <a href="user.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="adduser.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
           <li class="nav-item menu-open">
             <a href="products.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Products
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="manufacture.php" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Manufactures
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="protypes.php" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Protypes
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="index.php" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Users
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -286,6 +278,15 @@ $protypes = new Protypes;
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="manufacture.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Manufactures
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
             <a href="addmanufacture.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -295,10 +296,39 @@ $protypes = new Protypes;
             </a>
           </li>
           <li class="nav-item menu-open">
+            <a href="protypes.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Protypes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item menu-open">
+            <a href="productadd.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item menu-open">
             <a href="addprotype.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Add protypes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="index.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+              Thống Kê
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

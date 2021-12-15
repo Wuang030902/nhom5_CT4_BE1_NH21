@@ -1,8 +1,5 @@
 <?php 
 require "header.php";
-// if (isset($_GET['manu_id'])) :
-//   $manufacture = new Manufacture();
-//   $manufacture = $manufacture->getManufactureById($_GET['id']);
 ?>
 
 
@@ -13,12 +10,12 @@ require "header.php";
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Project Edit</h1>
+            <h1>Project Add</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Project Edit</li>
+              <li class="breadcrumb-item active">Project Add</li>
             </ol>
           </div>
         </div>
@@ -27,13 +24,12 @@ require "header.php";
 
     <!-- Main content -->
     <section class="content">
-    <form action="editmanu.php?id=<?php echo $_GET['manu_id'] ?>"  method="post" enctype="multipart/form-data">
-    
+    <form action="edit4.php?id=<?php echo $_GET['email'] ?>" method="post" enctype="multipart/form-data">
       <div class="row">
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Manufacture Edit</h3>
+              <h3 class="card-title">User Add</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -41,19 +37,33 @@ require "header.php";
                 </button>
               </div>
             </div>
-            <?php
-            $manu_id = $_GET['manu_id'];
-            $getManufactureById = $manu->getManufacturgiteById2($manu_id);
-            foreach ($getManufactureById as $value) :
+            <?php 
+            $email = $_GET['email'];
+            $getUserByEmail = $account->getUserByEmail($email);
+            foreach ($getUserByEmail as $value) :
              ?>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Name</label>
-                <input type="text" id="inputName" value="<?php echo $value['manu_name'] ?>"class="form-control" name = "manu_name">
+                <label for="inputName">Email</label>
+                <input type="text" id="inputName" value ="<?php echo $value['email'] ?>"class="form-control" name = "email">
               </div>
-              <?php endforeach; ?>
+              <div class="form-group">
+                <label for="inputName">Pass Word</label>
+                <input type="text" id="inputName"  class="form-control" name = "password">
+              </div>
+              <div class="form-group">
+                <label for="inputName">FirstName</label>
+                <input type="text" id="inputName" value ="<?php echo $value['first_name'] ?>" class="form-control" name = "firstname">
+              </div>
+              <div class="form-group">
+                <label for="inputName">LastName</label>
+                <input type="text" id="inputName" value ="<?php echo $value['last_name'] ?>" class="form-control" name = "lastname">
+              </div>
+
+              
               
             </div>
+            <?php endforeach; ?>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -63,8 +73,7 @@ require "header.php";
       <div class="row">
         <div class="col-12">
           
-          <input type="submit" name = "submit" value="EDIT MANUFACTURE" class="btn btn-success float-right">
-
+          <input type="submit" name = "submit" value="Create new Porject" class="btn btn-success float-right">
         </div>
       </div>
       </form>
@@ -73,7 +82,6 @@ require "header.php";
   </div>
   <!-- /.content-wrapper -->
 <?php
-// endif;
 require "footer.html"; 
 ?>
   

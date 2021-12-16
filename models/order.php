@@ -1,8 +1,9 @@
 <?php
 class Order extends Db{
-    public function getAllOrder()
+    public function getAllOrder($email)
     {
-        $sql = self::$connection->prepare("SELECT * FROM `order`");
+        $sql = self::$connection->prepare("SELECT * FROM `order` WHERE id = ?");
+        $sql->bind_param("s",$email);
         $sql->execute(); //return an object
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

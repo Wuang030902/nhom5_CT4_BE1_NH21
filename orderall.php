@@ -5,7 +5,7 @@ if (isset($_SESSION['email'])) :
     $product = new Product;
     $getorder = new Order;
     $getcart = new Cart;
-    $getAllOrder = $getorder->getAllOrder();
+    $getAllOrder = $getorder->getAllOrder($_SESSION['email']);
 ?>
     <div id="mainBody">
         <div class="container">
@@ -89,12 +89,13 @@ if (isset($_SESSION['email'])) :
                                 <th>Tổng tiền</th>
                                 <th>Trạng thái</th>
                                 <th>Chỉnh sửa </th>
+                                <th style="text-align: center;">Chi tiết sản phẩm</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($getAllOrder as $value): ?>
                             <tr>
-                                <td> <?php  echo $value['madonhang'] ?></td>
+                                <td><?php  echo $value['madonhang'] ?></td>
                                 <td>
                                 <?php  echo $value['ngaymua'] ?>
                                 </td>
@@ -102,6 +103,7 @@ if (isset($_SESSION['email'])) :
                                 <td><?php echo str_replace(",",".",number_format($value['tongtien']))  ?></td>
                                 <td><?php  echo $value['trangthai'] ?></td>
                                 <td><a href="delorder.php?madonhang=<?php echo $value['madonhang']  ?>">Xóa đơn hàng</a></td>
+                                <td style="text-align: center;"><a href="order_details.php">[...]</a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

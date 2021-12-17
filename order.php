@@ -20,10 +20,8 @@ if (isset($_SESSION['email'])) {
         $order->addOrder($_SESSION['email'], $sanPham, $_GET['tongtien'], "Active");
         // order details
         $getAllOrder = $order->getAllOrder($_SESSION['email']);
-        $qtyGetAllOrder = count($getAllOrder);
-        $order_id =$getAllOrder[$qtyGetAllOrder-1]['madonhang'];
+        $order_id =$getAllOrder[0]['madonhang'];
         foreach($getAllCart as $value){
-            var_dump($order_id,$_SESSION['email'],$value['product_id'],$value['qty']);
             $orderDetails->addOrderDetails($order_id,$_SESSION['email'],$value['product_id'],$value['qty']);
         }
         //order details 

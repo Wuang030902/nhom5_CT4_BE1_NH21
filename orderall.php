@@ -103,7 +103,7 @@ if (isset($_SESSION['email'])) :
                                 <td><?php echo str_replace(",",".",number_format($value['tongtien']))  ?></td>
                                 <td><?php  echo $value['trangthai'] ?></td>
                                 <td><a href="delorder.php?madonhang=<?php echo $value['madonhang']  ?>">Xóa đơn hàng</a></td>
-                                <td style="text-align: center;"><a href="order_details.php">[...]</a></td>
+                                <td style="text-align: center;"><a href="order_details.php?order_id=<?php echo $value['madonhang'] ?>">[...]</a></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

@@ -6,6 +6,7 @@ require "models/protypes.php";
 require "models/account.php";
 require "models/cart.php";
 require "models/order.php";
+require "models/order_details.php";
 require "mylibrary.php";
 $product = new Product;
 $getAllProduct = $product->getAllProducts();

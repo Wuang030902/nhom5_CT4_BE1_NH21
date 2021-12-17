@@ -5,12 +5,14 @@ require "models/products.php";
 require "models/manufacture.php";
 require "models/protypes.php";
 require "models/account.php";
-
-
+require "models/order_details.php";
+require "models/order.php";
 $manu = new Manufacture;
 $product = new Products;
 $protypes = new Protypes;
 $account = new Account;
+$order_details = new OrderDetails;
+$order = new Order;
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -305,21 +307,49 @@ $account = new Account;
             </a>
           </li>
           
-          <li class="nav-item menu-open">
-            <a href="productadd.php" class="nav-link ">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Add product
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
+          
           
           <li class="nav-item menu-open">
             <a href="addprotype.php" class="nav-link ">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Add protypes
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="order_details.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Order Details
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="addorderdetails.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add Order Details
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="order.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Order
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="addorder.php" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Add Order
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>

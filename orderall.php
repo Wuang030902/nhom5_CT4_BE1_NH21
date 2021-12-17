@@ -77,19 +77,19 @@ if (isset($_SESSION['email'])) :
                         <li><a href="index.html">Home</a> <span class="divider">/</span></li>
                         <li class="active"> SHOPPING CART</li>
                     </ul>
-                    <h3> Đơn hàng [ <small>3 Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+                    <h3> Order [ <small>3 Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
                     <hr class="soft" />
 
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Mã đơn hàng</th>
-                                <th>Ngày mua</th>
-                                <th>Sản phẩm</th>
-                                <th>Tổng tiền</th>
-                                <th>Trạng thái</th>
-                                <th>Chỉnh sửa </th>
-                                <th style="text-align: center;">Chi tiết sản phẩm</th>
+                                <th>Order id</th>
+                                <th>Date</th>
+                                <th style="text-align: center;">Product</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Update </th>
+                                <th style="text-align: center;">Product details</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,7 +102,7 @@ if (isset($_SESSION['email'])) :
                                 <td> <?php  echo $value['sanpham'] ?></td>
                                 <td><?php echo str_replace(",",".",number_format($value['tongtien']))  ?></td>
                                 <td><?php  echo $value['trangthai'] ?></td>
-                                <td><a href="delorder.php?madonhang=<?php echo $value['madonhang']  ?>">Xóa đơn hàng</a></td>
+                                <td><a href="delorder.php?madonhang=<?php echo $value['madonhang']  ?>">DELETE</a></td>
                                 <td style="text-align: center;"><a href="order_details.php?order_id=<?php echo $value['madonhang'] ?>">[...]</a></td>
                             </tr>
                             <?php endforeach; ?>

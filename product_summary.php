@@ -41,7 +41,7 @@ if (isset($_SESSION['email'])) :
 						<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 						<li class="active"> SHOPPING CART</li>
 					</ul>
-					<h3> SHOPPING CART [ <small>3 Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
+					<h3> SHOPPING CART [ <small>3 Item(s) </small>]<a href="index.php" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>
 					<hr class="soft" />
 
 					<table class="table table-bordered">
@@ -101,7 +101,7 @@ if (isset($_SESSION['email'])) :
 
 
 
-					<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+					<a href="index.php" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
 					<a href="order.php?tongtien=<?php echo $totalProduct;?>" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a>
 
 				</div>

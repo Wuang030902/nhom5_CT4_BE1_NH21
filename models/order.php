@@ -33,4 +33,12 @@ class Order extends Db{
         $sql->bind_param("i",$madonhang);
         return $sql->execute(); //return an object
     }
+    public function get3Product()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `chart` ORDER BY `qty`  DESC LIMIT 3");
+        $sql->execute(); //return an object
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items; //return an array
+    }
 }
